@@ -1,0 +1,28 @@
+{
+    "apps": [
+        {
+            "name": "site_ver_2_lottery_in",
+            "script": "./lottery_in.js",
+            "watch": true,
+            "log_date_format": "YYYY-MM-DD HH:mm Z"
+        },
+        {
+            "name": "site_ver_2_lottery_open",
+            "script": "./lottery_open.js",
+            "watch": true,
+            "log_date_format": "YYYY-MM-DD HH:mm Z"
+        },
+        {
+            "name": "site_ver_2_lottery_qun",
+            "script": "./lottery_qun.js",
+            "watch": true,
+            "log_date_format": "YYYY-MM-DD HH:mm Z"
+        },
+        {
+            "name": "site_ver_2_lottery_caomei",
+            "script": "./lottery_caomei.js",
+            "watch": true,
+            "log_date_format": "YYYY-MM-DD HH:mm Z"
+        }
+    ]
+}
