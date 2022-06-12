@@ -9,7 +9,7 @@ const sequelizeSD28 = {
     username: 'root',
     password: 'k9=@*SCT?-LbSky7FcrKMmvXu',
     database: 'sd28_com_20210603'
-}, 
+};
 const sequelize = new Sequelize(sequelizeSD28.database, sequelizeSD28.username, sequelizeSD28.password, {
     host: sequelizeSD28.host,
     dialect: 'mysql',
@@ -105,7 +105,25 @@ const USERBET = sequelize.define('user_bet',
     }
 });
 //
-const getBetData = async() => 
+const aTob = async(a,b) =>
+{
+    if(!b) return a;
+    let n = a;
+    //
+    for(let i in b)
+    {
+        if(n[i])
+        {
+            n[i] = parseInt(a[i]) + parseInt(b[i]);
+        }else{
+            n[i] = b[i];
+        }
+    }
+    //
+    return n;
+}
+//
+const getBetData = async(category, peroids) => 
 {
     const _bet_data = await USERBET.findAll({
         attributes: ['type','vals'],
@@ -120,24 +138,29 @@ const getBetData = async() =>
     for(let i in _bet_data)
     {
         const _bi = _bet_data[i];
-        
+        // console.log(_bi['type'], _bi['vals']);
+        data[_bi['type']] = await aTob(JSON.parse(_bi['vals']), data[_bi['type']]);
     }
+    return data;
 }
 // 
 app.get('/', async(req, res) =>
 {
     const { category, peroids } = req.query;
-    console.log(category, peroids);
+    // console.log(category, peroids);
     // 
-    if(!game || !peroids) return res.json({});
+    if(!category || !peroids) return res.json({});
     // 
-    const _bets = await getBetData(category, peroids);
+    let _bets = '';
+    try {
+        _bets = await getBetData(category, peroids);
+    } catch (error) {
+        
+    }
     //
     if(!_bets) return res.json({});
     // 
-
-    // 
-    res.json({data:123});
+    res.json(_bets);
 })
-
+//
 app.listen(7777);

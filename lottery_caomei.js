@@ -1,11 +1,11 @@
 //
-const { caomei } = require('./config/config');
+const { caomei, ocean } = require('./config/config');
 const { redis_sd28_pub, redis_lottery_get, redis_lottery_set } = require('./tool/redis');
 //
 const redis = require("redis");
 // 
-const redis_caomei_subs = redis.createClient(caomei);
-// 
+// const redis_caomei_subs = redis.createClient(caomei); // Tencent Server
+const redis_caomei_subs = redis.createClient(ocean); // Digital Ocean Server 
 // 
 const sub_name = 'lottery_caomei_data';
 const pub_admin = 'sd28-admin-data';

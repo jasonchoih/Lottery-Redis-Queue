@@ -39,5 +39,11 @@ module.exports = {
         host: '170.106.15.145',
         password: 'Yf@gert&*4RTer%fg45@#4Ui56$%ertTy5e',
         db: 2
+    },
+    ocean: {
+        port: 6379,
+        host: '143.244.174.180',
+        password: 'n35IY5R2ifsOBKlWaAsz3cEqENCXxancNP1',
+        db: 2
     }
 }

@@ -23,6 +23,12 @@
             "script": "./lottery_caomei.js",
             "watch": true,
             "log_date_format": "YYYY-MM-DD HH:mm Z"
+        },
+        {
+            "name": "site_ver_2_bet_out",
+            "script": "./bet_out.js",
+            "watch": true,
+            "log_date_format": "YYYY-MM-DD HH:mm Z"
         }
     ]
 }
